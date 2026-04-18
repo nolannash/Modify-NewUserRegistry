@@ -1,0 +1,16 @@
+# Log/output files
+outputs/
+
+# PowerShell module cache
+*.psm1~
+
+# Windows
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store

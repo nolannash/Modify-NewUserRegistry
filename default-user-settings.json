@@ -1,0 +1,50 @@
+{
+  "_info": "Settings applied to the Default User NTUSER.DAT hive by Set-DefaultUserRegistry.ps1. New user profiles inherit these values.",
+  "_notes": [
+    "All paths are relative to the HKCU root (the hive root).",
+    "Integer values become REG_DWORD. String values become REG_SZ.",
+    "Fields prefixed with '_' are metadata and ignored by the script.",
+    "Only add settings that are traceable to official Microsoft documentation."
+  ],
+  "settings": [
+    {
+      "_category": "Copilot",
+      "_description": "Disable Windows Copilot via the policy-backed registry key. Prevents Copilot from launching and removes the taskbar icon for the user.",
+      "_reference": "https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-windowsai",
+      "_note": "Microsoft has marked TurnOffWindowsCopilot as a legacy policy subject to deprecation. Future Windows versions may require AppLocker rules. Still functional as of Win11 24H2.",
+      "path": "Software\\Policies\\Microsoft\\Windows\\WindowsCopilot",
+      "properties": {
+        "TurnOffWindowsCopilot": 1
+      }
+    },
+    {
+      "_category": "Copilot",
+      "_description": "Hide the Copilot button from the taskbar. This is a UI-level change and does not disable Copilot functionality on its own — pair with the policy key above.",
+      "_reference": "https://learn.microsoft.com/en-us/answers/questions/3847406/how-can-i-disable-copilot-in-windows-11-pro-(2025)",
+      "path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "properties": {
+        "ShowCopilotButton": 0
+      }
+    },
+    {
+      "_category": "Taskbar",
+      "_description": "Align taskbar icons to the left instead of the Windows 11 default center alignment.",
+      "_reference": "https://learn.microsoft.com/en-us/windows/apps/develop/settings/settings-windows-11",
+      "_values": "0 = Left, 1 = Center (default)",
+      "path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+      "properties": {
+        "TaskbarAl": 0
+      }
+    },
+    {
+      "_category": "Taskbar",
+      "_description": "Set the search box on the taskbar to icon-only mode instead of the full search bar.",
+      "_reference": "https://learn.microsoft.com/en-us/answers/questions/1525351/need-to-apply-taskbar-ui-setting-on-win-10-devices",
+      "_values": "0 = Hidden, 1 = Icon only, 2 = Search box, 3 = Search button",
+      "path": "Software\\Microsoft\\Windows\\CurrentVersion\\Search",
+      "properties": {
+        "SearchboxTaskbarMode": 1
+      }
+    }
+  ]
+}
